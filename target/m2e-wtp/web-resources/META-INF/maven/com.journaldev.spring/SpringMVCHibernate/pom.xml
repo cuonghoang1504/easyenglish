@@ -194,6 +194,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>ROOT</finalName>
+        <sourceDirectory>src</sourceDirectory>
     </build>
 </project>
