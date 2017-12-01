@@ -27,7 +27,7 @@ private UserService userService;
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String index(Model model) {
 		System.out.println("Someone is loading the admin page");
-		return "management";
+		return "admin";
 		//return "admin";
 	}
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)

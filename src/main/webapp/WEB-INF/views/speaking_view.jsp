@@ -15,7 +15,26 @@
 
 </script>
 </head>
-<body>
-	<h3>SPEAKING</h3>
+<body class = "container bg-warning">
+<div class = "col-lg-1 col-sm-1"></div>
+<div class = "col-lg-10 col-sm-10 bg-warning" style = "width:100%">
+<center><h2>SPEAKING</h2></center>
+<div class = "row bg-danger" style="padding:10px"><b><i><u>QUESTION:</u></i></b> How are you doing?
+How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?
+<div style = "float:right; margin-top:10px"><button class = "btn-info" >NEXT</button></div>
+</div>
+
+<div class = "row bg-success" style = "margin-top: 5px;padding:10px"><i><u>Useful vocabulary:</u></i></div>
+
+<div class = "row bg-primary" style = "margin-top: 5px; padding:10px;"><i><u>ANSWER:</u></i>
+
+<br>
+<div class = "form-group">
+<textarea style = "min-height:250px" class="form-control" placeholder ="Type your answer here or take some note...">
+</textarea></div>
+</div>
+
+</div>
+<div class = "col-lg-1 col-sm-1"></div>	
 </body>
 </html>

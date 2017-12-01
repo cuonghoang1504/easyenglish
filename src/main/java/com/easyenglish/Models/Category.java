@@ -8,6 +8,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+public class Category{
+	private int categoryId;
+	private String categoryName;
+	private int numOfQuestions;
+	private int numOfVocab;
+	public int getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	public int getNumOfQuestions() {
+		return numOfQuestions;
+	}
+	public void setNumOfQuestions(int numOfQuestions) {
+		this.numOfQuestions = numOfQuestions;
+	}
+	public int getNumOfVocab() {
+		return numOfVocab;
+	}
+	public void setNumOfVocab(int numOfVocab) {
+		this.numOfVocab = numOfVocab;
+	}
+}
+
+/*
 @Entity(name = "category")
 public class Category {
 	@Id
@@ -37,3 +69,4 @@ public class Category {
 		this.questions = questions;
 	}
 }
+*/

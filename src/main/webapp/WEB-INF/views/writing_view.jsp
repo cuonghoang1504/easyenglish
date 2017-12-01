@@ -16,7 +16,7 @@
 </script>
 
 </head>
-<body class = "bg-fluid bg-success">
+<body class = "container bg-fluid bg-success">
 	<h2><center>WRITING PRACTICE</center></h2>
 	<div class = "row" style = "height: 10px"></div>
 	<div class = "row">
@@ -50,7 +50,6 @@
 	<div class = "row bg-warning" style = "border: 1px; padding:10px">
 	<b>ANSWER: </b>
 	<textarea id = "answer" style = "width: 100%; height: 60%; margin-top: 5px; padding: 5px"></textarea>
-	</div>
 	</div>
 	</div>
 </body>
