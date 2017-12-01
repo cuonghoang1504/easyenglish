@@ -12,5 +12,19 @@ public class DefaultController {
 		System.out.println("Default page loading!");
 	    return "home";
 	}
-	
+	@RequestMapping(value = "/vocab", method = RequestMethod.GET)
+	public String getVocabPage() {
+		System.out.println("Vocab page loading!");
+	    return "vocab_view";
+	}
+	@RequestMapping(value = "/speaking", method = RequestMethod.GET)
+	public String getSpeakingPage() {
+		System.out.println("Speaking page loading!");
+	    return "speaking_view";
+	}
+	@RequestMapping(value = "/writing", method = RequestMethod.GET)
+	public String getWritingView() {
+		System.out.println("Writing page loading!");
+	    return "writing_view";
+	}
 }

@@ -4,7 +4,7 @@
 <%@ page session="false" %>
 <html lang="en">
 <head>
-  <title>Management site</title>
+  <title>VOCABULARY</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,6 +17,6 @@
 
 </head>
 <body>
-	Form to add a new vocab
+	<h2>SPEAKING PRACTICE</h2>
 </body>
 </html>
