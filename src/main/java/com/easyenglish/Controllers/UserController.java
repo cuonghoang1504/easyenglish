@@ -24,13 +24,6 @@ private UserService userService;
 		this.userService = us;
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getIndex(Model model) {
-		System.out.println("Someone is loading the index page");
-		return "index";
-		//return "admin";
-	}
-	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String index(Model model) {
 		System.out.println("Someone is loading the admin page");
