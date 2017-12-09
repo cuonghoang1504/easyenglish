@@ -38,9 +38,8 @@ tr {
 <div class = "col-lg-4 col-sm-4">
 <div class = "form-group">
 	<u><i class = "text-danger">Category Name:</i></u>
-	<textarea class= "form-input" style = "margin-top:10px;margin-bottom:10px; height: 100px; width: 90%" id = "cateName">
-	</textarea>
-	<input type = "button" class = "btn-warning" value = "Add Category">
+	<textarea class="form-control" placeholder ="Type your answer here or take some note..." style = "margin-top:10px;margin-bottom:10px; height: 100px; width: 90%" id = "cateName"></textarea>
+	<input type = "button" onclick = "addCategory()" class = "btn-warning" value = "Add Category">
 </div>
 </div>
 <div class = "col-lg-8 col-sm-8">

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,10 +14,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.easyenglish.Models.Category;
+import com.easyenglish.Services.CategoryService;
+
+import Response.CategoryView;
 
 @Controller
 public class DefaultController {
-
+private CategoryService categoryService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="categoryService")
+	public void setCategoryService(CategoryService cs){
+		this.categoryService = cs;
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
 		System.out.println("Default page loading!");
@@ -40,20 +52,36 @@ public class DefaultController {
 	@RequestMapping(value = "admin/ajax", method = RequestMethod.POST)
 	public ModelAndView ajax(HttpServletRequest request) {
 		String tab = request.getParameter("tab");
+		ModelAndView tabContent = null;
+		List<Category> categories = new ArrayList<Category>();
+		categories = this.categoryService.getAllCategories();
 		if(tab.equals("4")){
-			ModelAndView tabContent = new ModelAndView("manageCategory");
-			List<Category> categories = new ArrayList<Category>();
-			for(int i = 0; i <10; i++){
-				Category c = new Category();
-				c.setCategoryId(1 + i);
-				c.setCategoryName("Category " + i);
-				c.setNumOfQuestions(i*5);
-				c.setNumOfVocab(i*10);
-				categories.add(c);
+			tabContent = new ModelAndView("manageCategory");
+			List<CategoryView> categoryViews = new ArrayList<CategoryView>();
+			
+			for(Category category : categories){
+				CategoryView c = new CategoryView();
+				c.setCategoryId(category.getCategory_id());
+				c.setCategoryName(category.getCategoryName());
+				c.setNumOfQuestions(category.getQuestions().size());
+				c.setNumOfVocab(category.getVocabs().size());
+				categoryViews.add(c);
 			}
-			tabContent.addObject("categories", categories);
+			tabContent.addObject("categories", categoryViews);
 			return tabContent;
 		}
-		return null;
+		else if(tab.equals("1")){
+			tabContent = new ModelAndView("manageSpeaking");
+			tabContent.addObject("categories", categories);
+		}
+		else if(tab.equals("2")){
+			tabContent = new ModelAndView("manageWriting");
+			tabContent.addObject("categories", categories);
+		}
+		else if(tab.equals("3")){
+			tabContent = new ModelAndView("manageVocab");
+			tabContent.addObject("categories", categories);
+		}
+		return tabContent;
 	}
 }

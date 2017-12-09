@@ -14,7 +14,76 @@
 $(document).ready(function(){
   ajaxHandler(1);
 });
-
+function addQuestion(type){
+	var qCate = "";
+	$("[name='cbxCateName[]']:checked").each(function () {
+		qCate = qCate + "#" + $(this).val();
+	});
+	if(qCate == ""){
+		alert("Please choose at least one category, if no category appears, add one first!");
+		return;
+	}
+	var part = document.querySelector('input[name="part"]:checked').value;
+	if(type == '2')
+		var module = document.querySelector('input[name="module"]:checked').value;
+	var sQuestion = $('#sQuestion').val();
+	var sHint = $('#sHint').val();
+	if(sQuestion == ""){
+		alert("Please input question before adding!");
+		return;
+	}
+	 
+	var url;
+	if(type == '1')
+		url = document.location + "/addSpeakingQuestion";
+	else
+		url = document.location + "/addWritingQuestion";
+	$.ajax({
+		method: 'POST',
+		url : url,
+		dataType : "html",
+		data : {
+			sQuestion : sQuestion,
+			sHint	: sHint,
+			qCate : qCate,
+			part : part,
+			module : module
+		},
+		success : function(responseText) {
+			//document.getElementById("mainZone").innerHTML = responseText;
+			ajaxHandler(type);
+		},
+        error: function(e) 
+        {
+            alert('Error: ' + e);
+        }
+	});
+	}
+function addCategory(){
+	var cateName = document.getElementById("cateName").value;
+	if(cateName.trim() == ""){
+			alert("Please enter category name!");
+			return;
+		}
+	var url = document.location + "/addCategory";
+	$.ajax({
+		method: 'POST',
+		url : url,
+		dataType : "html",
+		data : {
+			cateName : cateName
+		},
+		success : function(responseText) {
+			//document.getElementById("mainZone").innerHTML = responseText;
+			ajaxHandler(4);
+		},
+        error: function(e) 
+        {
+            alert('Error: ' + e);
+        }
+	});
+	
+}
 function ajaxHandler(tab){
 	var i = 0;
 	for(i = 1 ; i < 5; i ++){
@@ -40,7 +109,49 @@ function ajaxHandler(tab){
         }
 	});
 }
-
+function addVocabulary(){
+	alert("Add a vocab");
+	var vocab = document.getElementById("vocab").value;
+	var vocabMean = document.getElementById("vocabMean").value;
+	var vocabExample = document.getElementById("vocabExample").value;
+	if(vocab.trim() == ""){
+			alert("Please enter new vocabulary!");
+			return;
+		}
+	if(vocabMean.trim() == ""){
+		alert("Vocabulary's meaning should not be empty!");
+		return;
+	}
+	var qCate = "";
+	$("[name='cbxCateName[]']:checked").each(function () {
+		qCate = qCate + "#" + $(this).val();
+	});
+	if(qCate == ""){
+		alert("Please choose at least one category, if no category appears, add one first!");
+		return;
+	}
+	var url = document.location + "/addVocabulary";
+	alert(url);
+	$.ajax({
+		method: 'POST',
+		url : url,
+		dataType : "html",
+		data : {
+			qCate : qCate,
+			vocab : vocab,
+			vocabMean: vocabMean,
+			vocabExample: vocabExample
+		},
+		success : function(responseText) {
+			//document.getElementById("mainZone").innerHTML = responseText;
+			ajaxHandler(3);
+		},
+        error: function(e) 
+        {
+            alert('Error: ' + e);
+        }
+	});
+	}
 </script>
 </head>
 <body class = "container bg-fluid bg-warning">

@@ -12,15 +12,40 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-
+$(document).ready(function(){
+	getRandomSpeakingQuestion();
+	
+	});
+	
+function getRandomSpeakingQuestion(){
+	//var url = document.location + "/getRandomSpeakingQuestion";
+	var url = document.location + "/getRandomSpeakingQuestion";
+	alert(url);
+	$.ajax({
+		method: 'POST',
+		url : url,
+		dataType : "html",
+		data : {
+		},
+		success : function(responseText) {
+			document.getElementById("question").innerHTML = responseText;
+			//ajaxHandler(4);
+		},
+        error: function(e) 
+        {
+            alert('Error: ' + e);
+        }
+	});
+}
 </script>
 </head>
 <body class = "container bg-warning">
 <div class = "col-lg-1 col-sm-1"></div>
 <div class = "col-lg-10 col-sm-10 bg-warning" style = "width:100%">
 <center><h2>SPEAKING</h2></center>
-<div class = "row bg-danger" style="padding:10px"><b><i><u>QUESTION:</u></i></b> How are you doing?
+<div class = "row bg-danger" style="padding:10px"><b><i><u>QUESTION:</u></i></b> <div id = "question">How are you doing?
 How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?
+</div>
 <div style = "float:right; margin-top:10px"><button class = "btn-info" >NEXT</button></div>
 </div>
 
