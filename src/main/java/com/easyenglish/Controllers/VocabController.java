@@ -36,12 +36,15 @@ private CategoryService categoryService;
 	@RequestMapping(value = "admin/addVocabulary", method = RequestMethod.POST)
 	@ResponseBody
 	public String addVocabulary(HttpServletRequest request) {
+		System.out.println("Server: Adding a vocab");
 		Vocabulary v = new Vocabulary();
 		String vocab = request.getParameter("vocab");
 		String vocabMean = request.getParameter("vocabMean");
 		String cate = request.getParameter("qCate");
 		String vocabExample = request.getParameter("vocabExample");
-		
+		String synonyms = request.getParameter("vocabSynonyms");
+		String types = request.getParameter("vocabTypes");
+		System.out.println(types);
 		String[] cates = cate.split("#");
 		List<Category> categories = new ArrayList<Category>(); 
 		for(String s: cates){
@@ -54,7 +57,17 @@ private CategoryService categoryService;
 		v.setExample(vocabExample);
 		v.setMeaning(vocabMean);
 		v.setVocab(vocab);
-		System.out.println("Adding a vocab..." + vocab + vocabMean + cate + vocabExample);
+		v.setSynonyms(synonyms);
+		System.out.println(types.contains(("1")));
+		if(types.contains("1"))
+			v.setVerb(true);
+		if(types.contains("2"))
+			v.setNoun(true);
+		if(types.contains("3"))
+			v.setAdj(true);
+		if(types.contains("4"))
+			v.setAdv(true);
+		//System.out.println("Adding a vocab..." + vocab + vocabMean + cate + vocabExample);
 		this.vocabularyService.addVocab(v);
 		return "success";
 	}

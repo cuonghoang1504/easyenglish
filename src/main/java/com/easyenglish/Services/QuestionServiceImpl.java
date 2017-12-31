@@ -27,4 +27,10 @@ public class QuestionServiceImpl implements QuestionService{
 		// TODO Auto-generated method stub
 		return this.questionDAO.getRandomSpeakingQuestion();
 	}
+
+	@Transactional
+	public Question getRandomWritingQuestion() {
+		// TODO Auto-generated method stub
+		return this.questionDAO.getRandomWritingQuestion();
+	}
 }

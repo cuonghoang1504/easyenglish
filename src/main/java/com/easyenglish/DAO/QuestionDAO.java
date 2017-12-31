@@ -6,4 +6,8 @@ public interface QuestionDAO {
 	public void addQuestion(Question q);
 
 	public Question getRandomSpeakingQuestion();
+
+	public Question getRandomWritingQuestion();
+	
+	public boolean isQuestionExisted(Question q);
 }

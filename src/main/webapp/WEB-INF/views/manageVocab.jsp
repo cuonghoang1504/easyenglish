@@ -41,18 +41,37 @@ tr {
 </div>
 
 <div class = "row">
+<div class = "col-lg-3 col-sm-3"><label class= "text-danger">Type: </label></div>
+<div class = "col-lg-9 col-sm-9">
+<form class = "form-group">
+<input type = "checkbox" class = "form-input" name = "type[]" value = "1"> <label class = "label text-warning">Verb</label>
+<input type = "checkbox" class = "form-input" name = "type[]" value = "2"> <label class = "label text-warning">Noun</label>
+<input type = "checkbox" class = "form-input" name = "type[]" value = "3"> <label class = "label text-warning">Adjective</label>
+<input type = "checkbox" class = "form-input" name = "type[]" value = "4"> <label class = "label text-waring">Adverb</label>
+</form>
+</div>
+</div>
+
+<div class = "row">
 <div class = "col-lg-3 col-sm-3"><label class= "text-danger">Meaning(s): </label></div>
 <div class = "col-lg-9 col-sm-9">
-<textarea id = "vocabMean" style = "height: 75px" class = "form-control" placeholder = "Enter vocabulary meaning..."></textarea>
+<textarea id = "vocabMean" style = "height: 50px" class = "form-control" placeholder = "Enter vocabulary meaning..."></textarea>
 </div>
 </div>
 
 <div class = "row">
 <div class = "col-lg-3 col-sm-3"><label class= "text-danger">Example(s): </label></div>
 <div class = "col-lg-9 col-sm-9">
-<textarea id = "vocabExample" style = "height: 100px" class = "form-control" placeholder = "Give some examples of usages..."></textarea>
+<textarea id = "vocabExample" style = "height: 75px" class = "form-control" placeholder = "Give some examples of usages..."></textarea>
 </div>
-</div>			
+</div>	
+
+<div class = "row">
+<div class = "col-lg-3 col-sm-3"><label class= "text-danger">Synonym(s): </label></div>
+<div class = "col-lg-9 col-sm-9">
+<textarea id = "vocabSynonyms" style = "height: 50px" class = "form-control" placeholder = "Synonyms of given word"></textarea>
+</div>
+</div>				
 
 <div class = "row" style = "margin-top: 10px">
 <div class = "col-lg-3 col-sm-3"><label class = "text-danger">Category(ies):</label></div>

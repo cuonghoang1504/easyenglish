@@ -17,7 +17,6 @@ import com.easyenglish.Models.Question;
 import com.easyenglish.Services.CategoryService;
 import com.easyenglish.Services.QuestionService;
 
-import Response.SpeakingView;
 @Controller
 public class QuestionController {
 private QuestionService questionService;
@@ -83,7 +82,7 @@ private CategoryService categoryService;
 		q.setCategories(categories);
 		q.setQuestion(question);
 		q.setHint(hint);
-		q.setType(1);
+		q.setType(2);
 		q.setPart(Integer.parseInt(part));
 		
 		this.questionService.addQuestion(q);

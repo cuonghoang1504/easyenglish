@@ -114,12 +114,21 @@ function addVocabulary(){
 	var vocab = document.getElementById("vocab").value;
 	var vocabMean = document.getElementById("vocabMean").value;
 	var vocabExample = document.getElementById("vocabExample").value;
+	var vocabSynonyms = document.getElementById("vocabSynonyms").value;
 	if(vocab.trim() == ""){
 			alert("Please enter new vocabulary!");
 			return;
 		}
 	if(vocabMean.trim() == ""){
 		alert("Vocabulary's meaning should not be empty!");
+		return;
+	}
+	var vocabTypes = "";
+	$("[name='type[]']:checked").each(function () {
+		vocabTypes = vocabTypes + "" + $(this).val();
+	});
+	if(vocabTypes == ""){
+		alert("Please select word type to continue...!");
 		return;
 	}
 	var qCate = "";
@@ -133,14 +142,16 @@ function addVocabulary(){
 	var url = document.location + "/addVocabulary";
 	alert(url);
 	$.ajax({
-		method: 'POST',
+		type: 'POST',
 		url : url,
 		dataType : "html",
 		data : {
 			qCate : qCate,
 			vocab : vocab,
 			vocabMean: vocabMean,
-			vocabExample: vocabExample
+			vocabExample: vocabExample,
+			vocabSynonyms : vocabSynonyms,
+			vocabTypes : vocabTypes
 		},
 		success : function(responseText) {
 			//document.getElementById("mainZone").innerHTML = responseText;
@@ -148,7 +159,7 @@ function addVocabulary(){
 		},
         error: function(e) 
         {
-            alert('Error: ' + e);
+            //alert('Error: ' + e);
         }
 	});
 	}
@@ -159,10 +170,10 @@ function addVocabulary(){
 <div class = "col-lg-10 col-sm-10 bg-danger">
 	<div class = "row" style = ""><center><h4>Administration</h4></center></div>
 	<div class = "row" style = "margin:5px">
-		<button id = "tab1" onclick = "ajaxHandler('1')" class = "btn btn-primary">SPEAKING</button>
-		<button id = "tab2" onclick = "ajaxHandler('2')" class = "btn btn-primary">WRITING</button>
-		<button id = "tab3" onclick = "ajaxHandler('3')" class = "btn btn-primary">VOCABULARY</button>
-		<button id = "tab4" onclick = "ajaxHandler('4')" class = "btn btn-primary">CATEGORY</button>
+		<button style = "width: 110px" id = "tab1" onclick = "ajaxHandler('1')" class = "btn btn-primary">SPEAKING</button>
+		<button style = "width: 110px" id = "tab2" onclick = "ajaxHandler('2')" class = "btn btn-primary">WRITING</button>
+		<button style = "width: 110px" id = "tab3" onclick = "ajaxHandler('3')" class = "btn btn-primary">VOCABULARY</button>
+		<button style = "width: 110px" id = "tab4" onclick = "ajaxHandler('4')" class = "btn btn-primary">CATEGORY</button>
 	</div>
 <div class = "row bg-info" style = "padding: 5px; margin:5px; min-height:300px">
 	<div id = "mainZone">haha</div>

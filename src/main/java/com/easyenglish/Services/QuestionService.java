@@ -8,4 +8,6 @@ public interface QuestionService {
 
 	Question getRandomSpeakingQuestion();
 
+	Question getRandomWritingQuestion();
+
 }

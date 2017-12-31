@@ -20,7 +20,8 @@ public class CategoryDAOImpl implements CategoryDAO{
 		this.sessionFactory = sf;
 	}
 	public void addCategory(Category c) {
-		this.sessionFactory.getCurrentSession().saveOrUpdate(c);
+		Session session = this.sessionFactory.getCurrentSession();
+		session.saveOrUpdate(c);
 	}
 	@Override
 	public List<Category> getAllCategories() {

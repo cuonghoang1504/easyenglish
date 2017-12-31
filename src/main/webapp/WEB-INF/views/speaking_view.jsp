@@ -40,16 +40,15 @@ function getRandomSpeakingQuestion(){
 </script>
 </head>
 <body class = "container bg-warning">
-<div class = "col-lg-1 col-sm-1"></div>
+<div class = "col-lg-1 col-sm-1"><a title="Click to go back the main menu"
+ href="#" onclick="home();return false;"><i>Menu</i></a></div>
 <div class = "col-lg-10 col-sm-10 bg-warning" style = "width:100%">
 <center><h2>SPEAKING</h2></center>
-<div class = "row bg-danger" style="padding:10px"><b><i><u>QUESTION:</u></i></b> <div id = "question">How are you doing?
-How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?How are you doing?
-</div>
-<div style = "float:right; margin-top:10px"><button class = "btn-info" >NEXT</button></div>
+<div class = "row bg-danger" style="padding:10px"><b><i><u>QUESTION:</u></i></b> <div id = "question">${question.question}</div>
+<div style = "float:right; margin-top:10px"><button class = "btn-info" onClick = "getContent('2')">NEXT</button></div>
 </div>
 
-<div class = "row bg-success" style = "margin-top: 5px;padding:10px"><i><u>Useful vocabulary:</u></i></div>
+<div class = "row bg-success" style = "margin-top: 5px;padding:10px"><i><u>Useful vocabulary:</u></i> ${question.usefulVocab} </div>
 
 <div class = "row bg-primary" style = "margin-top: 5px; padding:10px;"><i><u>ANSWER:</u></i>
 

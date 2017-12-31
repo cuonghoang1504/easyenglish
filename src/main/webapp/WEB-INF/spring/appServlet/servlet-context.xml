@@ -44,6 +44,7 @@
 				<beans:value>com.easyenglish.Models.Vocabulary</beans:value>
 				<beans:value>com.easyenglish.Models.User</beans:value>
 				<beans:value>com.easyenglish.Models.Question</beans:value>
+				<beans:value>com.easyenglish.Models.Answer</beans:value>
 			</beans:list>
 		</beans:property>
 		
@@ -52,7 +53,7 @@
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
 				</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
-				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
+				<beans:prop key="hibernate.hbm2ddl.auto">create-drop</beans:prop>
 			</beans:props>
 		</beans:property>
 	</beans:bean>
@@ -80,6 +81,12 @@
 	</beans:bean>
 	<beans:bean id="questionService" class="com.easyenglish.Services.QuestionServiceImpl">
 		<beans:property name="questionDAO" ref="questionDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="answerDAO" class="com.easyenglish.DAO.AnswerDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="answerService" class="com.easyenglish.Services.AnswerServiceImpl">
+		<beans:property name="answerDAO" ref="answerDAO"></beans:property>
 	</beans:bean>
 	<context:component-scan base-package="com.easyenglish" />
 	

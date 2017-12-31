@@ -16,7 +16,34 @@
 </script>
 
 </head>
-<body>
-	<h2>SPEAKING PRACTICE</h2>
+<body class = "container bg-warning">
+<div class = "col-lg-1 col-sm-1"><a title="Click to go back the main menu"
+ href="#" onclick="home();return false;"><i>Menu</i></a></div>
+<div class = "col-lg-10 col-sm-10 bg-warning" style = "width:100%">
+<center><h2>VOCABULARY</h2></center>
+<div class = "row bg-danger" style="padding:10px; margin: 15px">
+<center><h3><b class = "text-primary">${vocab.vocab}</b></h3></center>
+<div style = "float:right; margin-top:10px"><button class = "btn-info" onClick = "getContent('1')">NEXT</button></div>
+
+</div>
+
+
+<div class = "row bg-success" style = "margin: 15px;padding:10px; height: 20%">
+<b><i><u class = "text-primary">Defination:</u></i></b><br>
+${vocab.meaning}</div>
+
+<div class = "row bg-info" style = "margin: 15px; padding:10px; height: 20%">
+<b><i><u class = "text-primary">Example:</u></i></b><br>
+${vocab.example}
+</div>
+
+<div class = "row bg-danger" style = "margin: 15px; padding:10px;height:20%">
+<b><i><u class = "text-primary">Synonyms:</u></i></b><br>
+${vocab.synonyms}
+</div>
+
+</div>
+<div class = "col-lg-1 col-sm-1"></div>	
+</body>
 </body>
 </html>

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity(name = "question")
 public class Question {
@@ -24,7 +25,7 @@ public class Question {
 	private int type;
 	@Column(name = "hint")
 	private String hint;
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Category_Question", joinColumns = { @JoinColumn(name = "question_id") }, inverseJoinColumns = { @JoinColumn(name = "category_id") })
 	private List<Category> categories;
 	@Column(name = "module")
@@ -32,7 +33,17 @@ public class Question {
 	@Column(name = "part")
 	private int part;
 	
+	@OneToMany(mappedBy="question",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Answer> answers;
 	
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+
 	public int getModule() {
 		return module;
 	}

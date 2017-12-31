@@ -2,7 +2,15 @@ package com.easyenglish.Models;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.Type;
 
 @Entity(name = "vocabulary")
 public class Vocabulary {
@@ -20,7 +28,55 @@ public class Vocabulary {
 	@ManyToMany
 	private List<Category> categories;
 	
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	@Column(columnDefinition = "TINYINT", name = "verb")
+	private boolean verb;
 	
+	@Column(columnDefinition = "TINYINT",name = "noun")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean noun;
+	@Column(columnDefinition = "TINYINT",name = "adj")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean adj;
+	@Column(columnDefinition = "TINYINT",name = "adv")
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean adv;
+	
+	@Column(name = "synonyms")
+	private String synonyms;
+	
+	
+	
+	public String getSynonyms() {
+		return synonyms;
+	}
+	public void setSynonyms(String synonyms) {
+		this.synonyms = synonyms;
+	}
+	public boolean isVerb() {
+		return verb;
+	}
+	public void setVerb(boolean verb) {
+		this.verb = verb;
+	}
+	public boolean isNoun() {
+		return noun;
+	}
+	public void setNoun(boolean noun) {
+		this.noun = noun;
+	}
+	public boolean isAdj() {
+		return adj;
+	}
+	public void setAdj(boolean adj) {
+		this.adj = adj;
+	}
+	public boolean isAdv() {
+		return adv;
+	}
+	public void setAdv(boolean adv) {
+		this.adv = adv;
+	}
 	public String getVocab() {
 		return vocab;
 	}
