@@ -110,7 +110,7 @@ function ajaxHandler(tab){
 	});
 }
 function addVocabulary(){
-	alert("Add a vocab");
+	//alert("Add a vocab");
 	var vocab = document.getElementById("vocab").value;
 	var vocabMean = document.getElementById("vocabMean").value;
 	var vocabExample = document.getElementById("vocabExample").value;
@@ -140,7 +140,7 @@ function addVocabulary(){
 		return;
 	}
 	var url = document.location + "/addVocabulary";
-	alert(url);
+	//alert(url);
 	$.ajax({
 		type: 'POST',
 		url : url,

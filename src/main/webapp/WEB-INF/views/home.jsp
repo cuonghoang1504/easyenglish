@@ -16,7 +16,7 @@ var user_id = 1;
 function updateAnswer(user_id, question_id, answer, index){
 	//alert("Updating answer of user: " + user_id + " question: " + question_id + ". Answer: " + answer)
 	var url = document.location + "updateAnswer";
-	alert(url);
+	//alert(url);
 	$.ajax({
 		type: 'POST',
 		url : url,
