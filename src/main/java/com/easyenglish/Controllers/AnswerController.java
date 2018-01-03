@@ -57,6 +57,7 @@ private UserService userService;
 		System.out.println("updating an answer");
 		int question_id = Integer.parseInt(request.getParameter("question_id"));
 		String answer = request.getParameter("answer");
+		System.out.println("---new answer: " + answer);
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
 		Answer an = this.answerService.findAnswer(question_id, user_id);
 		an.setAnswer(answer);

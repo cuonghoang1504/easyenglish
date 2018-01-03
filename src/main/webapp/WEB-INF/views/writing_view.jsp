@@ -46,7 +46,7 @@
 	<b>ANSWER:</b>
 	<textarea id = "answer" style = "width: 100%; height: 60%; margin-top: 5px; padding: 5px">${question.answer}</textarea>
 	<input style = "visibility:hidden; height:0px; width:0px" type = "text" id = "questionId" value = "${question.questionId}">
-	<textarea  style = "visibility:hidden; height:0px; width:0px" id = "oldAnswer" value = "${question.answer}"></textarea>
+	<textarea  style = "visibility:hidden; height:0px; width:0px" id = "oldAnswer">${question.answer}</textarea>
 	</div>
 	</div>
 	</div>

@@ -113,15 +113,30 @@ public void setCategoryService(AnswerService as){
 			for(Vocabulary v : vcabs){
 				usefulVocab += v.getVocab() + "; ";
 			}
+			
 			// Get answer and mark if marked
 			User user = this.userService.getUserById(user_id);
 			List<Answer> answers = user.getAnswers();
+			boolean found = false;
 			for(Answer a: answers){
 				if(a.getQuestion().getQuestion_id() == q.getQuestion_id()){
+					found = true;
+					System.out.println("Found answer, answer: " + a.getAnswer());
 					sv.setAnswer(a.getAnswer());
 					sv.setMark("" + a.getMark());
-				}
+						}
+					}
+			if(!found){
+				Answer answer = new Answer();
+				answer.setAnswer("");
+				answer.setUser(user);
+				answer.setQuestion(q);
+				answer.setMarked(false);
+				this.answerService.saveAnswer(answer);
 			}
+			sv.setQuestionId(q.getQuestion_id());
+			
+			
 			sv.setQuestion(q.getQuestion());
 			sv.setUsefulVocab(usefulVocab);
 			sv.setQuestionId(q.getQuestion_id());

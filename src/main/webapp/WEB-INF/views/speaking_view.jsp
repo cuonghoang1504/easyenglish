@@ -12,31 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	getRandomSpeakingQuestion();
-	
-	});
-	
-function getRandomSpeakingQuestion(){
-	//var url = document.location + "/getRandomSpeakingQuestion";
-	var url = document.location + "/getRandomSpeakingQuestion";
-	alert(url);
-	$.ajax({
-		method: 'POST',
-		url : url,
-		dataType : "html",
-		data : {
-		},
-		success : function(responseText) {
-			document.getElementById("question").innerHTML = responseText;
-			//ajaxHandler(4);
-		},
-        error: function(e) 
-        {
-            alert('Error: ' + e);
-        }
-	});
-}
+
 </script>
 </head>
 <body class = "container bg-warning">
@@ -45,7 +21,7 @@ function getRandomSpeakingQuestion(){
 <div class = "col-lg-10 col-sm-10 bg-warning" style = "width:100%">
 <center><h2>SPEAKING</h2></center>
 <div class = "row bg-danger" style="padding:10px"><b><i><u>QUESTION:</u></i></b> <div id = "question">${question.question}</div>
-<div style = "float:right; margin-top:10px"><button class = "btn-info" onClick = "getContent('2')">NEXT</button></div>
+<div style = "float:right; margin-top:10px"><button class = "btn-info" onClick = "nextQuestion('2')">NEXT</button></div>
 </div>
 
 <div class = "row bg-success" style = "margin-top: 5px;padding:10px"><i><u>Useful vocabulary:</u></i> ${question.usefulVocab} </div>
@@ -54,8 +30,10 @@ function getRandomSpeakingQuestion(){
 
 <br>
 <div class = "form-group">
-<textarea style = "min-height:250px" class="form-control" placeholder ="Type your answer here or take some note...">
-</textarea></div>
+<textarea id = "answer" style = "min-height:250px" class="form-control" placeholder ="Type your answer here or take some note...">${question.answer}</textarea>
+<input style = "visibility:hidden; height:0px; width:0px" type = "text" id = "questionId" value = "${question.questionId}">
+<textarea  style = "visibility:hidden; height:0px; width:0px" id = "oldAnswer">${question.answer}</textarea>	
+</div>
 </div>
 
 </div>

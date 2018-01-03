@@ -43,10 +43,11 @@ function saveAnswer(){
 	alert("Save answer");
 }
 function nextQuestion(index){
-	var oldAnswer = document.getElementById("oldAnswer").value;;
+	//alert("next question of index: " + index);
+	var oldAnswer = document.getElementById("oldAnswer").value;
 	var answer = document.getElementById("answer").value;
 	var question_id = document.getElementById("questionId").value;
-	if(answer !== oldAnswer){
+	if(answer.trim() !== oldAnswer.trim()){
 		var text;
 		if(oldAnswer == "")
 			text = "Do you want to save your answer?";
@@ -58,7 +59,7 @@ function nextQuestion(index){
 			updateAnswer(user_id, question_id, answer, index);
 		}
 	}
-	//getContent(index);
+	getContent(index);
 }
 
 function getContent(index){
