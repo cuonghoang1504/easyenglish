@@ -50,8 +50,11 @@ private CategoryService categoryService;
 		for(String s: cates){
 			if(s.equals(""))
 				continue;
+			System.out.println("Vocab adding to Cate name: " + s);
 			Category c = this.categoryService.findCategoryByName(s);
+			System.out.println("Found cate by name: " + c.getCategoryName());
 			categories.add(c);
+			System.out.println("Vocab added to cate name: " + c.getCategoryName());
 		}
 		v.setCategories(categories);
 		v.setExample(vocabExample);
