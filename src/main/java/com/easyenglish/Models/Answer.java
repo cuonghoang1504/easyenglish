@@ -19,7 +19,7 @@ public class Answer {
 	@GeneratedValue
 	@Column(name = "answer_id")
 	private int answer_id;
-	@Column(name = "answer", columnDefinition="TEXT")
+	@Column(name = "answer", length=4000)
 	private String answer;
 	@Column(columnDefinition = "TINYINT", name = "marked")
 	private boolean marked;
