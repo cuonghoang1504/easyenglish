@@ -61,7 +61,7 @@ private CategoryService categoryService;
 		v.setMeaning(vocabMean);
 		v.setVocab(vocab);
 		v.setSynonyms(synonyms);
-		System.out.println(types.contains(("1")));
+		
 		if(types.contains("1"))
 			v.setVerb(true);
 		if(types.contains("2"))

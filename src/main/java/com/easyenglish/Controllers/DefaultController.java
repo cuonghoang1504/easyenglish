@@ -123,7 +123,7 @@ public void setCategoryService(AnswerService as){
 				if(a.getQuestion().getQuestion_id() == q.getQuestion_id()){
 					found = true;
 					//System.out.println("Found answer, answer: " + a.getAnswer());
-					sv.setAnswer(a.getAnswer().replace("\n", "<br />\n"));
+					sv.setAnswer(a.getAnswer());//.replace("\n", "<br />\n"));
 					sv.setMark("" + a.getMark());
 						}
 					}
@@ -187,7 +187,7 @@ public void setCategoryService(AnswerService as){
 			for(Answer a: answers){
 				if(a.getQuestion().getQuestion_id() == q.getQuestion_id()){
 					found = true;
-					qv.setAnswer(a.getAnswer().replace("\n", "<br />\n"));
+					qv.setAnswer(a.getAnswer());//.replace("\n", "<br />\n"));
 					qv.setMark("" + a.getMark());
 						}
 					}
