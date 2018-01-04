@@ -47,8 +47,6 @@ private CategoryService categoryService;
 			if(s.equals(""))
 				continue;
 			Category c = this.categoryService.findCategoryByName(s);
-			c.getQuestions().add(q);
-			this.categoryService.addCategory(c);
 			categories.add(c);
 		}
 		q.setCategories(categories);
@@ -58,6 +56,13 @@ private CategoryService categoryService;
 		q.setPart(Integer.parseInt(part));
 		
 		this.questionService.addQuestion(q);
+		for(String s: cates){
+			if(s.equals(""))
+				continue;
+			Category c = this.categoryService.findCategoryByName(s);
+			c.getQuestions().add(q);
+			this.categoryService.addCategory(c);
+		}
 		return "success";
 	}
 	
