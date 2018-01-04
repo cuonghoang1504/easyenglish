@@ -62,7 +62,7 @@ public class VocabularyDAOImpl implements VocabularyDAO{
 			vocabs.addAll(c.getVocabs());
 		}
 		Collections.shuffle(vocabs);
-		
+		System.out.println("=====Total vocab found: " + vocabs.size());
 		return vocabs.subList(0, vocabs.size() > 10 ? 10 : vocabs.size());
 	}
 

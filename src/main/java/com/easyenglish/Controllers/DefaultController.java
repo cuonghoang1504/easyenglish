@@ -107,8 +107,9 @@ public void setCategoryService(AnswerService as){
 				mv.addObject("question", sv);
 				return mv;
 			}
-			
+			System.out.println("----Category found of this question: " + q.getCategories().size());
 			List<Vocabulary> vcabs = this.vocabularyService.getRandomVocabsByCate(q.getCategories());
+			System.out.println("Num of vocab found: " + vcabs.size());
 			String usefulVocab = "";
 			for(Vocabulary v : vcabs){
 				usefulVocab += v.getVocab() + "; ";
@@ -137,6 +138,7 @@ public void setCategoryService(AnswerService as){
 			sv.setQuestionId(q.getQuestion_id());
 		
 			sv.setQuestion(q.getQuestion().replace("\n", "<br />\n"));
+			System.out.println("------useful vocab: " + usefulVocab);
 			sv.setUsefulVocab(usefulVocab);
 			sv.setQuestionId(q.getQuestion_id());
 			mv.addObject("question", sv);
@@ -154,6 +156,7 @@ public void setCategoryService(AnswerService as){
 			
 			qv.setQuestion(q.getQuestion().replace("\n", "<br />\n"));
 			List<Vocabulary> vocabs = new ArrayList<Vocabulary>();
+			System.out.println("----Category found of this question: " + q.getCategories().size());
 			for(Category c : q.getCategories()){
 				List<Vocabulary> vs = c.getVocabs();
 				if(vs.size()==0)
@@ -164,12 +167,14 @@ public void setCategoryService(AnswerService as){
 			}
 			
 			if(vocabs.size() > 0){
+				System.out.println("total vocab found: " + vocabs.size());
 				Collections.shuffle(vocabs);
 				vocabs = vocabs.subList(0, vocabs.size() > 10 ? 10 : vocabs.size());
 				String usefulVocab = "";
 				for(Vocabulary v : vocabs){
 					usefulVocab += v.getVocab() + "; ";
 				}
+				System.out.println("------useful vocab: " + usefulVocab);
 				qv.setUsefulVocab(usefulVocab);
 			}else{
 				qv.setUsefulVocab("No word found!");
