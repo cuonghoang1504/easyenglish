@@ -20,9 +20,9 @@ public class Vocabulary {
 	private int vocab_id;
 	@Column(name = "vocab")
 	private String vocab;
-	@Column(name = "meaning")
+	@Column(name = "meaning", columnDefinition="TEXT")
 	private String meaning;
-	@Column(name = "example")
+	@Column(name = "example", columnDefinition="TEXT")
 	private String example;
 	@JoinTable(name = "Category_Vocab", joinColumns = { @JoinColumn(name = "vocab_id") }, inverseJoinColumns = { @JoinColumn(name = "category_id") })
 	@ManyToMany

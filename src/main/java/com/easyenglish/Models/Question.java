@@ -19,11 +19,11 @@ public class Question {
 	@GeneratedValue
 	@Column(name = "question_id")
 	private int question_id;
-	@Column(name = "question")
+	@Column(name = "question", columnDefinition="TEXT")
 	private String question;
 	@Column(name = "type")
 	private int type;
-	@Column(name = "hint")
+	@Column(name = "hint", columnDefinition="TEXT")
 	private String hint;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Category_Question", joinColumns = { @JoinColumn(name = "question_id") }, inverseJoinColumns = { @JoinColumn(name = "category_id") })
