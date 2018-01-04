@@ -52,6 +52,8 @@ private CategoryService categoryService;
 				continue;
 			System.out.println("Vocab adding to Cate name: " + s);
 			Category c = this.categoryService.findCategoryByName(s);
+			c.getVocabs().add(v);
+			this.categoryService.addCategory(c);
 			System.out.println("Found cate by name: " + c.getCategoryName());
 			categories.add(c);
 			System.out.println("Vocab added to cate name: " + c.getCategoryName());
