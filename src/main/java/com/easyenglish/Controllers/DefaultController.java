@@ -121,8 +121,8 @@ public void setCategoryService(AnswerService as){
 			for(Answer a: answers){
 				if(a.getQuestion().getQuestion_id() == q.getQuestion_id()){
 					found = true;
-					System.out.println("Found answer, answer: " + a.getAnswer());
-					sv.setAnswer(a.getAnswer());
+					//System.out.println("Found answer, answer: " + a.getAnswer());
+					sv.setAnswer(a.getAnswer().replace("\n", "<br />\n"));
 					sv.setMark("" + a.getMark());
 						}
 					}
@@ -135,9 +135,8 @@ public void setCategoryService(AnswerService as){
 				this.answerService.saveAnswer(answer);
 			}
 			sv.setQuestionId(q.getQuestion_id());
-			
-			
-			sv.setQuestion(q.getQuestion());
+		
+			sv.setQuestion(q.getQuestion().replace("\n", "<br />\n"));
 			sv.setUsefulVocab(usefulVocab);
 			sv.setQuestionId(q.getQuestion_id());
 			mv.addObject("question", sv);
@@ -153,7 +152,7 @@ public void setCategoryService(AnswerService as){
 				return mv;
 			}
 			
-			qv.setQuestion(q.getQuestion());
+			qv.setQuestion(q.getQuestion().replace("\n", "<br />\n"));
 			List<Vocabulary> vocabs = new ArrayList<Vocabulary>();
 			for(Category c : q.getCategories()){
 				List<Vocabulary> vs = c.getVocabs();
@@ -183,7 +182,7 @@ public void setCategoryService(AnswerService as){
 			for(Answer a: answers){
 				if(a.getQuestion().getQuestion_id() == q.getQuestion_id()){
 					found = true;
-					qv.setAnswer(a.getAnswer());
+					qv.setAnswer(a.getAnswer().replace("\n", "<br />\n"));
 					qv.setMark("" + a.getMark());
 						}
 					}

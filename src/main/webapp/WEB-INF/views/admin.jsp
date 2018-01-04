@@ -32,7 +32,14 @@ function addQuestion(type){
 		alert("Please input question before adding!");
 		return;
 	}
-	 
+	/*
+	var eachLine = sQuestion.split('\n');
+	alert('Lines found: ' + eachLine.length);
+	sQuetion = ""; 
+	for(var i = 0, i < eachLine.length; i++) {
+	     sQuestion += eachLine[i] + "\n";
+	 }
+	*/
 	var url;
 	if(type == '1')
 		url = document.location + "/addSpeakingQuestion";
