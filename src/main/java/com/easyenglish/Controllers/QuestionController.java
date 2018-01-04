@@ -47,6 +47,8 @@ private CategoryService categoryService;
 			if(s.equals(""))
 				continue;
 			Category c = this.categoryService.findCategoryByName(s);
+			c.getQuestions().add(q);
+			this.questionService.addQuestion(q);
 			categories.add(c);
 		}
 		q.setCategories(categories);
