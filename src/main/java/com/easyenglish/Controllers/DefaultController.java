@@ -33,6 +33,7 @@ private CategoryService categoryService;
 private VocabularyService vocabularyService;
 private UserService userService;
 private AnswerService answerService;
+private List <String> surveyAnswers = new ArrayList<String>();
 
 @Autowired(required=true)
 @Qualifier(value="answerService")
@@ -209,6 +210,34 @@ public void setCategoryService(AnswerService as){
 	public String getVocabPage() {
 		System.out.println("Vocab page loading!");
 	    return "vocab_view";
+	}
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	public String getChatPage() {
+		System.out.println("Vocab page loading!");
+	    return "chat";
+	}
+	@RequestMapping(value = "/survey", method = RequestMethod.GET)
+	public String getSurveyPage() {
+		System.out.println("Survey page loading!");
+		//List<Question> questions = 
+				
+	    return "survey";
+	}
+	@RequestMapping(value = "/survey/sumitSurvey", method = RequestMethod.POST)
+	@ResponseBody
+	public String submitSurvey(HttpServletRequest request) {
+		String answers = request.getParameter("answers");
+		surveyAnswers.add(answers);
+		System.out.println(">>>>>" + surveyAnswers);
+	    return "success";
+	}
+	@RequestMapping(value = "/survey/admin", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView surveyAdmin(HttpServletRequest request) {
+		System.out.println(">>>>>" + surveyAnswers);
+		ModelAndView modelAndView = new ModelAndView("survey_admin");
+		modelAndView.addObject("answers", surveyAnswers);
+	    return modelAndView;
 	}
 	@RequestMapping(value = "/speaking", method = RequestMethod.GET)
 	public String getSpeakingPage() {
