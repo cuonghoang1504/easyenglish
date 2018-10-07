@@ -17,7 +17,6 @@
   .main-container{
   	padding: 10px;
   	width: 80%;
-  	height: 450px;
   	position: absolute;
   	left: 50%;
   	top: 50%;
@@ -37,13 +36,16 @@
   	border-radius: 10px;
   	box-shadow: 1px 2px #888888;
   	padding: 10px;
+  	font-size: 18px;
+  	color: white;
+    text-shadow: 2px 2px 4px #000000;
   	text-align: center;
   }
   .answer-session{
   	margin: auto;
   	margin-top: 10px;
   	width: 90%;
-  	height: 70%;
+  	min-height: 350px;
   	text-align: center;
   	border-radius: 10px;
   	border: 1px solid #aaaaaa;
@@ -70,7 +72,6 @@
   .s-radio {
     margin: auto;
     text-align: left;
-    padding-right: 5px;
   	width: 250px;
   }
   .s-checkbox {
@@ -85,8 +86,12 @@
   }
   .radio-element {
   	display: inline-block;
-  	width: 50px;
+  	width: 70px;
   	margin-bottom: 10px;
+  }
+  
+  .radio-element span {
+  	margin-right: 5px;
   }
   
   </style>
@@ -270,13 +275,20 @@
 	  } else {
 		  
 	  }
-	  displayNextQuestion();
+	  //alert(thisQuestion.answer);
+	  currentQuestion ++;
+	  
+	  displayNextQuestion();  
+	 
   }
   function displayNextQuestion(){
 	//Check if this is the last question
 	  if(currentQuestion == questions.length){
 		  $("#btn_next").prop("disabled", true);
 		  $("#btn_submit").removeAttr("disabled");
+	  }
+	  if(currentQuestion > questions.length){
+		  return;
 	  }
 	
 	  var thisQuestion = questions[currentQuestion - 1];
@@ -348,12 +360,9 @@
 	  
 	  var status = "Câu hỏi thứ " + currentQuestion + " trong " + questions.length + " câu hỏi!";
 	  $("#txt_status").text(status);
-	  
-	
-	  currentQuestion++;
   }
   function submitAnswer(){
-	  //alert("submit hitteed");
+	  getAnswerOfThisQuestion();
 	  url = document.location + "/sumitSurvey";
 	  var answers = JSON.stringify(questions);
 	  $.ajax({
@@ -378,20 +387,23 @@
   </script>
 </head>
 <body>
-<div class = "main-container bg-warning" id = "main-container">
-	<div class = "row question-session bg-success text-default" id = "question">
-	This is a question!
-	</div>
-	<div class = "row answer-session bg-success" id = "answer">
-	This is answer part
-	</div>
-	<div class = "row bottom-session">
-		<div class = "col-sm-6 txt-status text-info" id = "txt_status">hahaha</div>
-		<div class = "col-sm-6">
-			<button class = "btn btn-info btm-right" onclick = "getAnswerOfThisQuestion()" id = "btn_next">Next</button>
-			<button class = "btn btn-info btm-right" onclick = "submitAnswer()" id = "btn_submit">Submit</button>
+<div class = "container container-fluid">
+	<div class = "main-container bg-warning" id = "main-container">
+		<div class = "row">
+			<div class = "question-session bg-success text-default" id = "question">
+			This is a question!
+			</div>
+			<div class = "row answer-session bg-success" id = "answer">
+			This is answer part
+			</div>
+			<div class = "row bottom-session">
+				<div class = "col-sm-6 txt-status text-info" id = "txt_status">hahaha</div>
+				<div class = "col-sm-6">
+					<button class = "btn btn-info btm-right" onclick = "getAnswerOfThisQuestion()" id = "btn_next">Next</button>
+					<button class = "btn btn-info btm-right" onclick = "submitAnswer()" id = "btn_submit">Submit</button>
+				</div>
+			</div>
 		</div>
-	</div>
 </div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.easyenglish.Controllers;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -229,6 +231,14 @@ public void setCategoryService(AnswerService as){
 		String answers = request.getParameter("answers");
 		surveyAnswers.add(answers);
 		System.out.println(">>>>>" + surveyAnswers);
+		try{
+			FileWriter fileWriter = new FileWriter("surveys.txt");
+		    PrintWriter printWriter = new PrintWriter(fileWriter);
+		    printWriter.print(surveyAnswers);
+		    printWriter.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	    return "success";
 	}
 	@RequestMapping(value = "/survey/admin", method = RequestMethod.GET)
