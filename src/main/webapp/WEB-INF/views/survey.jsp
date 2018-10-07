@@ -16,13 +16,10 @@
   }
   .main-container{
   	padding: 10px;
-  	width: 80%;
-  	position: absolute;
-  	left: 50%;
-  	top: 50%;
+  	width: 90%;
+ 	margin:auto;
+ 	margin-top: 20px;
   	font-size: 18px;
-  	-webkit-transform: translate(-50%, -50%);
-  	transform: translate(-50%, -50%);
   	/* border-radius */
  	border-radius: 2px;
 	/* box-shadow */
@@ -32,7 +29,7 @@
   .question-session{
   	margin: auto;
   	width: 90%;
-  	height: 15%;
+  	min-height: 15%;
   	border-radius: 10px;
   	box-shadow: 1px 2px #888888;
   	padding: 10px;
@@ -56,7 +53,7 @@
   	margin: auto;
   	margin-top: 10px;
   	width: 90%;
-  	height: 10%;
+  	min-height: 10%;
   }
   .btm-right{
   	float: right;
@@ -67,18 +64,19 @@
   	font-style: italic;
   }
   .s-textarea {
-  	width: 250px;
+  	width: 100%;
+  	min-height: 50px;
   }
   .s-radio {
     margin: auto;
     text-align: left;
-  	width: 250px;
+  	width: 200px;
   }
   .s-checkbox {
     margin: auto;
     text-align: left;
     padding-right: 5px;
-  	width: 350px;
+  	width: 100%;
   }
   span{
     margin-left: 10px;
@@ -86,12 +84,12 @@
   }
   .radio-element {
   	display: inline-block;
-  	width: 70px;
+  	width: 50px;
   	margin-bottom: 10px;
   }
   
   .radio-element span {
-  	margin-right: 5px;
+  	margin-right: 10px;
   }
   
   </style>
@@ -248,7 +246,7 @@
 		  var ys = thisQuestion.ys;
 		  ys.forEach(function(y){
 			  var name = "name" + ys.indexOf(y);
-			  var answer = $('input[name='+ name +']:checked').val();
+			  var answer = y + ": " + $('input[name='+ name +']:checked').val();
 			  thisQuestion.answer.push(answer);
 		  });
 		  

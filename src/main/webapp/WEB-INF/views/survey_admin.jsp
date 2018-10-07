@@ -23,14 +23,19 @@
   	font-weight: bold;
   }
   .answer {
-  	width: 100%;
+  	padding: 10px;
   }
   .survey {
   	margin: auto;
   	padding: 10px;
+  	width: 100%;
   }
   .answers {
   	margin: auto;
+  }
+  .main-container {
+  	width:100%;
+  	margin:auto;
   }
   </style>
   <script>
@@ -57,10 +62,11 @@
   </script>
 </head>
 <body>
-<div class = "main-container bg-warning">
+<div class = "bg-warning container-fluid main-container">
+	
 	<h2>SURVEY ADMIN</h2>
 	
-	<div class = " row bg-success answers" id = "answers">
+	<div class = "row answers" id = "answers">
 	</div>
 </div>
 </body>
